@@ -73,7 +73,7 @@ install_debian() {
     PSEUDONAME=$2
 
     # ensure that we have curl
-    apt-get -qq install -y curl
+    apt-get update && apt-get -qq install -y curl
 
     # get repos configurations
     echo "Configure EUGridPMA repository"
