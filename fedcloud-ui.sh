@@ -19,6 +19,8 @@ VOMSDIR=/etc/grid-security/vomsdir
 SUDO=""
 FETCH_CRL=fetch-crl
 
+set -e
+
 # VOMS config
 VOMS1_SERVER=voms1.grid.cesnet.cz
 VOMS1_DN="/DC=org/DC=terena/DC=tcs/C=CZ/ST=Hlavni mesto Praha/L=Praha 6/O=CESNET/CN=voms1.grid.cesnet.cz"
@@ -165,7 +167,7 @@ EOF
     done
 
     # fetch crls
-    $SUDO $FETCH_CRL
+    $SUDO $FETCH_CRL | true
 }
 
 
