@@ -167,7 +167,7 @@ EOF
     done
 
     # fetch crls
-    $SUDO $FETCH_CRL | true
+    $SUDO $FETCH_CRL || true
 }
 
 
