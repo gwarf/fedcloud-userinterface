@@ -1,5 +1,5 @@
 # Dockerfile for building a EGI FedCloud userinterface
-FROM ubuntu:xenial
+FROM ubuntu:trusty
 MAINTAINER Enol Fernandez <enol.fernandez@egi.eu>
 
 ADD fedcloud-ui.sh /tmp/fedcloud-ui.sh
