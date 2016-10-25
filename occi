@@ -1,6 +1,7 @@
 #!/bin/bash
 : ${OCCI_ENDPOINT:="https://carach5.ics.muni.cz:11443"}
 : ${VO:=fedcloud.egi.eu}
+: ${OCCI_CONTAINER:="egifedcloud/fedcloud-userinterface"}
 
 VO_VOLS=""
 MYDIR=$( cd -P -- "$(dirname -- "$0")" && pwd -P)
@@ -11,7 +12,7 @@ fi
 
 docker inspect occi-voms-proxy &> /dev/null && \
        docker run --volumes-from occi-voms-proxy -it \
-                  egifedcloud/fedcloud-userinterface \
+                  $OCCI_CONTAINER \
                   voms-proxy-info -exists
 
 if [ $? -ne 0 ]; then
@@ -20,12 +21,12 @@ if [ $? -ne 0 ]; then
     # create proxy after updating crls
     docker run -it -v ~/.globus:/root/.globus:ro $VO_VOLS \
                --name occi-voms-proxy \
-               egifedcloud/fedcloud-userinterface \
+               $OCCI_CONTAINER \
                /bin/bash -c "(fetch-crl -v -T 30 || true) && \
                              voms-proxy-init --voms $VO --rfc"
 fi
 
 docker run --rm --volumes-from occi-voms-proxy -it -v $PWD:/data:rw \
-           egifedcloud/fedcloud-userinterface \
+           $OCCI_CONTAINER \
            occi -n x509 -x /tmp/x509up_u0 -X -e ${OCCI_ENDPOINT} \
                 "$@"
