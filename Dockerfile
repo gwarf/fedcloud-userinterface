@@ -17,7 +17,7 @@ RUN fetch-crl -v || true
 
 WORKDIR /data
 
-RUN useradd occi
+RUN useradd -m occi
 
 RUN chown -R occi /etc/grid-security/certificates /data
 
