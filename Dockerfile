@@ -11,13 +11,14 @@ RUN apt-get -y install myproxy
 # and OpenStack CLI + VOMS
 RUN apt-get -y install python-pip
 RUN pip install openstack-voms-auth-type
+RUN pip install python-swiftclient
 RUN cat /etc/grid-security/certificates/*.pem >> $(python -m requests.certs)
 
 RUN fetch-crl -v || true
 
 WORKDIR /data
 
-RUN useradd occi
+RUN useradd -m occi
 
 RUN chown -R occi /etc/grid-security/certificates /data
 
