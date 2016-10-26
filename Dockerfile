@@ -18,10 +18,12 @@ RUN fetch-crl -v || true
 
 WORKDIR /data
 
+# Create occi user, give sudo privileges
 RUN useradd -m occi
-
+RUN apt-get -y install sudo
+RUN echo "occi ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/80-occi-user
+RUN chmod 0440 /etc/sudoers.d/80-occi-user
 RUN chown -R occi /etc/grid-security/certificates /data
-
 USER occi
 
 # /etc/grid-security/certificates keeps the CRLs
