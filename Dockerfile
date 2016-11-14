@@ -6,8 +6,8 @@ ADD fedcloud-ui.sh /tmp/fedcloud-ui.sh
 
 RUN /tmp/fedcloud-ui.sh
 
-# extra tools for docker image: myproxy 
-RUN apt-get -y install myproxy
+# extra tools for docker image: myproxy, vim and nano
+RUN apt-get -y install myproxy vim-tiny nano
 # and OpenStack CLI + VOMS
 RUN apt-get -y install python-pip
 RUN pip install openstack-voms-auth-type
