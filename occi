@@ -1,7 +1,7 @@
 #!/bin/bash
 : ${OCCI_ENDPOINT:="https://carach5.ics.muni.cz:11443"}
 : ${VO:=fedcloud.egi.eu}
-: ${OCCI_CONTAINER:="egifedcloud/fedcloud-userinterface"}
+: ${OCCI_CONTAINER:="egifedcloud/fedcloud-coretools"}
 
 
 VO_VOLS=""
