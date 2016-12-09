@@ -4,7 +4,7 @@ MAINTAINER Enol Fernandez <enol.fernandez@egi.eu>
 
 ADD fedcloud-ui.sh /tmp/fedcloud-ui.sh
 
-RUN /tmp/fedcloud-ui.sh
+RUN DEBIAN_FRONTEND=noninteractive /tmp/fedcloud-ui.sh
 
 # extra tools for docker image: myproxy
 RUN apt-get -y install myproxy
