@@ -5,8 +5,8 @@ MAINTAINER Enol Fernandez <enol.fernandez@egi.eu>
 # gain privileges
 USER root
 
-# extra tools for docker image: myproxy, ssh client, vim and nano
-RUN apt-get -y install openssh-client vim-tiny nano
+# extra tools for docker image
+RUN apt-get -y install openssh-client vim nano less
 
 # and get back to unprivileged user
 USER occi
